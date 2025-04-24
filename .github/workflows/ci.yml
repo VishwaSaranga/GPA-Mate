@@ -1,0 +1,76 @@
+name: CI Pipeline for GPA Mate
+
+on:
+  push:
+    branches: [main, staging]
+  pull_request:
+    branches: [main, staging]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [16.x, 18.x, 20.x] # Matrix testing across Node.js versions
+      fail-fast: false # Allow all matrix jobs to complete even if one fails
+
+    steps:
+      # Checkout the repository code
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      # Set up Node.js environment
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'npm' # Cache npm dependencies
+
+      # Install dependencies with caching
+      - name: Install Dependencies
+        run: npm ci
+
+      # Run linting (if applicable, e.g., ESLint)
+      - name: Run Linting
+        run: npm run lint
+        if: always() # Run even if previous steps fail
+
+      # Run tests (unit, integration, E2E) in parallel
+      - name: Run Tests
+        run: npm test -- --runInBand
+        env:
+          CI: true
+
+      # Build the Next.js app to catch build errors
+      - name: Build Next.js App
+        run: npm run build
+
+  security:
+    runs-on: ubuntu-latest
+    steps:
+      # Checkout the repository code
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      # SAST: Run CodeQL for static analysis
+      - name: Initialize CodeQL
+        uses: github/codeql-action/init@v2
+        with:
+          languages: javascript
+
+      - name: Perform CodeQL Analysis
+        uses: github/codeql-action/analyze@v2
+
+      # SCA: Dependency scanning is handled by Dependabot (configured separately)
+      # DAST: Simulate basic DAST by checking for exposed secrets
+      - name: Check for Exposed Secrets
+        uses: gitleaks/gitleaks-action@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  quality-gates:
+    runs-on: ubuntu-latest
+    needs: [test, security] # Depends on test and security jobs
+    steps:
+      - name: Quality Gate Check
+        run: echo "All tests and security scans passed. Ready for deployment!"
