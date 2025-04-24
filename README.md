@@ -1,6 +1,6 @@
 # GPA Mate
 
-GPA Mate is a Micro SaaS web application designed for university students and college advisors to calculate and track GPA effortlessly. Built with React and Firebase, it offers secure user authentication, course management, GPA calculation, and PDF report downloads. The app is deployed on Vercel with a CI/CD pipeline managed via GitHub Actions, ensuring scalability and reliability.
+GPA Mate is a Micro SaaS web application designed for university students and college advisors to calculate and track GPA effortlessly. Built with Vite JS and Firebase, it offers secure user authentication, course management, GPA calculation, and PDF report downloads. The app is deployed on Vercel with a CI/CD pipeline managed via GitHub Actions, ensuring scalability and reliability.
 
 **Live Demo**: [https://gpa-mate.vercel.app/](https://gpa-mate.vercel.app/)
 
@@ -15,7 +15,7 @@ GPA Mate is a Micro SaaS web application designed for university students and co
 
 ## Tech Stack
 
-- **Frontend**: React Framework
+- **Frontend**: Vite JS
 - **Backend/Database**: Firebase Firestore
 - **Authentication**: Firebase Authentication
 - **PDF Generation**: jsPDF
