@@ -1,19 +1,19 @@
 # GPA Mate
 
-GPA Mate is a Micro SaaS web application designed for university students and college advisors to calculate and track GPA effortlessly. Built with Vite JS and Firebase, it offers secure user authentication, course management, GPA calculation, and PDF report downloads. The app is deployed on Vercel with a CI/CD pipeline managed via GitHub Actions, ensuring scalability and reliability.
+✅ GPA Mate is a Micro SaaS web application designed for university students and college advisors to calculate and track GPA effortlessly. Built with Vite JS and Firebase, it offers secure user authentication, course management, GPA calculation, and PDF report downloads. The app is deployed on Vercel with a CI/CD pipeline managed via GitHub Actions, ensuring scalability and reliability.
 
-**Live Demo**: [https://gpa-mate.vercel.app/](https://gpa-mate.vercel.app/)
+**🟢 Live Demo**: [https://gpa-mate.vercel.app/](https://gpa-mate.vercel.app/)
 
-## Features
+## ⭕ Features
 
 - **User Authentication**: Secure login/signup using Firebase Authentication.
 - **Course Management**: Add, delete, and view courses with grades and credits.
 - **GPA Calculation**: Automatically calculate GPA based on entered grades and credits.
 - **PDF Export**: Download GPA reports as PDFs using jsPDF.
-- **Responsive Design**: Modern, clean UI built with Next.js, accessible on all devices.
+- **Responsive Design**: Modern, clean UI built with Vite JS, accessible on all devices.
 - **Data Persistence**: Store user data securely in Firebase Firestore.
 
-## Tech Stack
+## ⭕ Tech Stack
 
 - **Frontend**: Vite JS
 - **Backend/Database**: Firebase Firestore
@@ -22,7 +22,7 @@ GPA Mate is a Micro SaaS web application designed for university students and co
 - **Hosting**: Vercel
 - **CI/CD**: GitHub Actions
 
-## Project Structure
+## ⭕ Project Structure
 
 ```
 GPA-Mate/
@@ -32,15 +32,14 @@ GPA-Mate/
 ├── src/                     # Source code
 │   ├── components/          # Reusable UI components
 │   ├── pages/               # Next.js pages and API routes
-│   └── utils/               # Utility functions (e.g., GPA calculation)
-├── firebase.json            # Firebase configuration
-├── firestore.rules          # Firestore security rules
+│   ├── utils/               # Utility functions (e.g., GPA calculation)
+│   └── lib/firebase.ts      # Firebase config
 ├── .gitignore               # Git ignore file
 ├── package.json             # Dependencies and scripts
 └── README.md                # Project documentation
 ```
 
-## Getting Started
+## ⭕ Getting Started
 
 ### Prerequisites
 
@@ -99,20 +98,20 @@ GPA Mate is deployed on Vercel with automatic CI/CD via GitHub Actions.
    - Link your GitHub repository to Vercel.
    - Vercel will automatically build and deploy on every push to the specified branches.
 
-## CI/CD Pipeline
+## ⭕ CI/CD Pipeline
 
 The CI/CD pipeline is managed by GitHub Actions, defined in `.github/workflows/ci.yml`:
 - **Matrix Testing**: Tests across Node.js versions 16, 18, and 20.
 - **Security Scanning**: Includes SAST (CodeQL), DAST (Gitleaks), and SCA (Dependabot).
 - **Quality Gates**: Ensures all tests and scans pass before deployment.
 
-## Security & Compliance
+## ⭕ Security & Compliance
 
 - **Firebase Security Rules**: Restrict access to user data (`firestore.rules`).
 - **GDPR Compliance**: Anonymized user data in PDFs (optional email inclusion).
 - **Secrets Scanning**: Automated checks for exposed secrets using Gitleaks.
 
-## Contributing
+## ⭕ Contributing
 
 Contributions are welcome! Please follow these steps:
 
@@ -124,23 +123,26 @@ Contributions are welcome! Please follow these steps:
 
 Use the [Pull Request Template](.github/pull_request_template.md) and adhere to [Conventional Commits](https://www.conventionalcommits.org/).
 
-## Collaboration Protocols
+## ⭕ Collaboration Protocols
 
 - Use GitHub Issues for task tracking.
 - PRs require at least 1 review before merging.
 - Weekly dependency update reviews via Dependabot.
 
-## Future Roadmap
+## ⭕ Future Roadmap
 
 - Add dark mode for better accessibility.
 - Implement role-based access for advisors.
 - Introduce GPA trend analytics for semester-wise tracking.
 
-## License
+## ⭕ License
 
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
-## Acknowledgments
+## ⭕ Acknowledgments
 
 - Developed as part of the Systems Administration & Maintenance course (IT31023) under Mr. Isuru Samarappulige.
-- Student: W.V.S. Dissanayaka (ITBNM-2211-0124), Faculty of IT, Intake 11 NMC.
+- Student: <br>
+ITBNM-2211-0124 | W.V.S. Dissanayaka <br>
+Designer and Developer | GPA Mate <br>
+Horizon Campus | Faculty of IT (NMC Intake 11)
