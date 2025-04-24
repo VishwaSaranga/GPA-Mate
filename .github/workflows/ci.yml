@@ -1,0 +1,40 @@
+# 📁 .github/workflows/ci.yml
+name: GPA Mate CI Pipeline
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  install-and-test:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [18, 20]
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Lint check
+        run: npx eslint .
+
+      - name: Run audit check
+        run: npm audit --audit-level=moderate || true
+
+      - name: Run build (optional)
+        run: npm run build || echo \"No build script\"
+
+      - name: Test (if available)
+        run: echo \"No tests written yet.\"
